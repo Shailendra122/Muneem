@@ -1,0 +1,44 @@
+{% extends 'core/main_base.html' %}
+{% load static %}
+
+{% block css_file_path %}
+    <link href="{% static 'account/css/add_page.css' %}" rel="stylesheet">
+{% endblock css_file_path %}
+
+{% block navbar %}
+    {% include "core/navbar.html" %}
+{% endblock navbar %}
+
+{% block style %}
+body{
+    background-image: url("{% static 'account/a.jpg' %}");
+}
+{% endblock style %}
+{% block content %}
+<center>
+    <div  style="margin-top: 20px; padding: 8%; background-color:rgb(30, 28, 56) ; width: 40rem;" class="card">
+        <h1><font color="blue">Enter Your Data</font></h1>
+    <form action="" method="POST" style="color:white" class="form-horizontal" >
+        <table>
+        {% for field in form %}
+           
+            <tr style='margin-top:5px;padding:5px'>
+                <td>{{field.label_tag}}  </td>     
+                <td>{{field}}</td>
+                <br>
+            
+            </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td>
+                <div style="padding: 5px; margin-right: 150px; ">    
+
+                <input type="submit" value="Add"  class="btn btn-outline-primary">
+            </td>
+        </tr>
+        <table>
+    </form>
+    </div>
+</center>
+{% endblock content %}
