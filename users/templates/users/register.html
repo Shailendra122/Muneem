@@ -1,0 +1,94 @@
+{% extends 'core/main_base.html' %}
+{% load static %}
+
+{% block style %}
+body{
+    background-image: url("{% static 'account/a.jpg' %}");
+}
+.reg_head{
+  align-self: center;
+  height: 460px;
+  width: 500px;
+  border: 4px double blue;
+}
+#h{
+  margin-top: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 40px;
+  color: rgb(23, 13, 108);
+  border-bottom: 2px solid rgb(6, 6, 21);
+  border-top: 2px solid rgb(6, 6, 21);
+  width: 150px;
+}
+.form_{
+  width: 400px;
+  margin-top: 40px;
+}
+.container{
+  gap: 160px;
+  display: flex;
+  width: 500px;
+  margin-left: 0px;
+  padding-left: 30px;
+  padding-right: 30px;
+  height: 100px;
+}
+.head_{
+  border: 0px;
+  color: green;
+}
+#li_{
+  color: red;
+}
+.nav_link{
+  margin-top: 0px;
+}
+#navbar{
+  padding: 0px;
+  margin-top: 10px;
+  height: 40px;
+  margin-left: 800px;
+}
+{% endblock style %}
+{% block navbar %}
+  
+    <div class="container ">
+
+      <h1 class='head_'><a id='li_' href="index.html">Muneem</a></h1>
+
+      <nav id="navbar" class="navbar">
+        <a class="btn btn-outline-primary" class="nav_link" href="{% url 'home' %}">Home</a>
+        
+      </nav><!-- .navbar -->
+
+    </div>
+{% endblock navbar %}
+
+{% block content %}
+<center>
+<div class='reg_head'>
+<h3 id='head'>Register</h3>
+<hr>
+
+<form actiom="" method="POST">
+    {% csrf_token %}
+    <table>
+    {% for field in form %}
+    <tr>
+    <td>{{ field.label }}:  </td>
+    <td> {{ field }}</td>
+<tr>
+<tr style="height:18px">
+  <td></td>
+</tr>   
+    {% endfor %}
+    </table>
+
+    {% comment %} {{ form.as_p }} {% endcomment %}
+
+    <button type="submit" class="btn btn-outline-primary">Register</button>
+
+</form>
+</div>
+</center>
+{% endblock content %}
